@@ -18,11 +18,16 @@
     "vue-template-compiler": "^2.7.10",
     "vuetify": "^2.6.10"
   },
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/irkhamissimo/wegodev-frontend.git"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.12.3"
+  },
+  "vueCompilerOptions": {
+    "extensions": [
+      ".vue"
+    ]
   }
 }
