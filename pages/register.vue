@@ -79,7 +79,7 @@ export default {
       try {
         if (this.$refs.form.validate()) {
           this.isLoading = true;
-          const response = await this.$axios.$post('/api/register', this.form);
+          const response = await this.$axios.$post('http://localhost:5000/register', this.form);
           
           if(response.message === 'user is created succesfully') {
             alert(response.message);
