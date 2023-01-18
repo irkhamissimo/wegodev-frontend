@@ -54,14 +54,11 @@ export default {
       rules: {
 
         email: [
-          (v) => !!v || 'Email is required',
-          (v) => /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/.test(v) || 'Email must be valid',
-          (v) => !this.emailExist || 'Email already exist',
-
+          (v) => !!v || this.$t('FIELD_REQUIRED', {field: 'email'}),
+          (v) => /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/.test(v) || this.$t('INVALID_EMAIL'),
         ],
         password: [
-          (v) => !!v || 'Password is required',
-          (v) => v.length >= 6 || 'Password must be at least 6 characters',
+          (v) => v.length >= 6 || this.$t('FIELD_MIN', {field: 'password', min: 6}),
         ],
 
       }

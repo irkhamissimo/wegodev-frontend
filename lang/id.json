@@ -2,5 +2,11 @@
   "INTERNAL_SERVER_ERROR": "Server mengalami permasalahan",
   "email not found": "email tidak ditemukan",
   "invalid password": "password salah",
-  "success": "sukses"
+  "success": "sukses",
+
+  "FIELD_REQUIRED": "{field} harus diisi",
+  "FIELD_MIN": "{field} minimal {min} karakter",
+  "FIELD_CONFIRM": "Isi {fieldConfirm} tidak sama dengan {field}",
+  "INVALID_EMAIL": "Format email tidak valid",
+  "Email is already registered": "email sudah terdaftar"
 }
