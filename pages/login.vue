@@ -58,6 +58,7 @@ export default {
           (v) => /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/.test(v) || this.$t('INVALID_EMAIL'),
         ],
         password: [
+          (v) => !!v || this.$t('FIELD_REQUIRED', {field: 'password'}),
           (v) => v.length >= 6 || this.$t('FIELD_MIN', {field: 'password', min: 6}),
         ],
 
@@ -72,7 +73,7 @@ export default {
 
         this.isLoading = false;
       } catch (error) {
-        console.log(error.response);
+        
         this.isError = true;
         this.message = error.response ? error.response.data.message : "INTERNAL_SERVER_ERROR";
 

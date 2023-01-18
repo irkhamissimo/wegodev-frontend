@@ -3,8 +3,7 @@ export const state = () => ({
   refreshToken: null,
   fullname: null,
 });
-
-export const mutation = {
+export const mutations = {
   setFullName(state, fullname) {
     state.fullname = fullname;
   },
@@ -24,9 +23,9 @@ export const actions = {
     );
     if (!response) return false;
 
-    commit('setAccessToken', response.data.accessToken);
-    commit('setRefreshToken', response.data.refreshToken);
-    commit('setFullName', response.data.fullname);
+    commit('setAccessToken', response.accessToken);
+    commit('setRefreshToken', response.refreshToken);
+    commit('setFullName', response.fullname);
 
     return response;
   },
