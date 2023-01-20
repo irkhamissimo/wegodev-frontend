@@ -86,7 +86,7 @@ export default {
             this.$store.commit('auth/setAccessToken', response.accessToken),
             this.$store.commit('auth/setRefreshToken', response.refreshToken),
 
-            alert(response.message);
+            this.$router.push({name: 'index___' + this.$i18n.locale})
           }
           this.isLoading = false;
         }
