@@ -78,10 +78,14 @@
 
 <script>
 export default {
-  layout: 'auth',
   head() {
     return {
       title: 'Home'
+    }
+  },
+  mounted() {
+    if (!this.$store.getters['auth/authenticated']) {
+      this.$router.push('/login')
     }
   }
 }
