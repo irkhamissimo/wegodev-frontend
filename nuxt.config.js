@@ -3,7 +3,7 @@ import colors from 'vuetify/es5/util/colors';
 export default {
   ssr: false,
   server: {
-    port: 5000,
+    port: 5454,
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -77,5 +77,7 @@ export default {
   //   },
   // },
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    postcss: null
+  },
 };
