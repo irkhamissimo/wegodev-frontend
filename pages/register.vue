@@ -39,6 +39,7 @@
 
 <script>
 export default {
+  middleware: ['unauthenticated'],
   layout: 'auth',
   data() {
     return {
