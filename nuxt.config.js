@@ -25,7 +25,10 @@ export default {
   css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/persistedState.js', mode: 'client' }],
+  plugins: [
+    { src: '~/plugins/persistedState.js', mode: 'client' },
+    { src: '~/plugins/axiosInterceptor.js', mode: 'client' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -66,9 +69,10 @@ export default {
       },
     },
   },
-  // axios: {
-  //   proxy: true,
-  // },
+  axios: {
+    prefix: 'http://localhost:5000',
+    proxy: true,
+  },
   // proxy: {
   //   // target: 'http://localhost:5000/',
   //   '/api/': {
@@ -78,6 +82,6 @@ export default {
   // },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    postcss: null
+    postcss: null,
   },
 };
