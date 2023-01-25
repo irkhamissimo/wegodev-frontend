@@ -80,7 +80,7 @@ export default {
       try {
         if (this.$refs.form.validate()) {
           this.isLoading = true;
-          const response = await this.$axios.$post('http://localhost:5000/register', this.form);
+          const response = await this.$axios.$post('/register', this.form);
           console.log(response.accessToken)
           if (response.message === 'USER_REGISTER_SUCCESS') {
             this.$store.commit('auth/setFullName', response.fullname),
