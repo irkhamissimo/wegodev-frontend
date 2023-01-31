@@ -18,27 +18,23 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   data() {
-    return {
-      alerts: [
-        { message: 'Tes error 1', type: 'error', show: true },
-        { message: 'Tes error 2', type: 'success', show: true },
-        { message: 'Tes error 3', type: 'warning', show: true },
-      ]
-    }
+    return {}
   },
   methods: {
     onClose(index) {
-      this.alerts[index].show = false
+      console.log(index)
+      this.$store.commit('alerts/close', index)
     }
-  }
+  },
+  computed: {
+    ...mapState('alerts', ['alerts'])
+  }, 
 }
 </script>
-
-
-
-
 
 <style scoped>
 .v-bg-white {
