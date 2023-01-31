@@ -1,12 +1,13 @@
 <template>
   <div class="v-alert-right">
-    <v-alert v-for="(alert, index) in alerts" :key="index" outlined border="left" :type="alert.type" class="v-bg-white">
+    <v-alert v-for="(alert, index) in alerts" :key="index" v-model="alert.show" outlined border="left"
+      :type="alert.type" class="v-bg-white">
       <v-row>
         <v-col class="grow">
           {{ alert.message }}
         </v-col>
         <v-col class="shrink">
-          <v-btn small :color="alert.type" icon>
+          <v-btn small :color="alert.type" icon @click="onClose(index)">
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </v-col>
@@ -21,14 +22,21 @@ export default {
   data() {
     return {
       alerts: [
-        { message: 'Tes error 1', type: 'error' },
-        { message: 'Tes error 2', type: 'success' },
-        { message: 'Tes error 3', type: 'warning' },
+        { message: 'Tes error 1', type: 'error', show: true },
+        { message: 'Tes error 2', type: 'success', show: true },
+        { message: 'Tes error 3', type: 'warning', show: true },
       ]
+    }
+  },
+  methods: {
+    onClose(index) {
+      this.alerts[index].show = false
     }
   }
 }
 </script>
+
+
 
 
 
