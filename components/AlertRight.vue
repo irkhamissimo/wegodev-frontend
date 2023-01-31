@@ -1,21 +1,36 @@
 <template>
   <div class="v-alert-right">
-    <v-alert outlined border="left" type="error" class="v-bg-white">
+    <v-alert v-for="(alert, index) in alerts" :key="index" outlined border="left" :type="alert.type" class="v-bg-white">
       <v-row>
         <v-col class="grow">
-          Tess
+          {{ alert.message }}
         </v-col>
         <v-col class="shrink">
-          <v-btn small color="error" icon>
+          <v-btn small :color="alert.type" icon>
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </v-col>
       </v-row>
-
     </v-alert>
   </div>
 
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      alerts: [
+        { message: 'Tes error 1', type: 'error' },
+        { message: 'Tes error 2', type: 'success' },
+        { message: 'Tes error 3', type: 'warning' },
+      ]
+    }
+  }
+}
+</script>
+
+
 
 <style scoped>
 .v-bg-white {
