@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-main>
+      <AlertRight/>
       <TheHeader />
       <Nuxt />
     </v-main>
