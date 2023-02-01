@@ -14,9 +14,16 @@ export default {
     }
   },
   methods: {
-    createNewForm() {
-      this.isLoading = true
-      // this.$router.push('/form/create')
+    async createNewForm() {
+      try {
+        this.isLoading = true
+        const forms = await this.$axios.$post('/forms')
+        const questions = await this.$axios.$post(`/forms/${forms.form._id}/question`)
+        this.$router.push(`/questions/${forms.form._id}`)
+      } catch (error) {
+        console.log(error.response)
+        this.isLoading = true
+      }
     }
   }
 }
