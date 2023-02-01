@@ -18,6 +18,9 @@ export default {
       try {
         this.isLoading = true
         const forms = await this.$store.dispatch('forms/store')
+        const questions = await this.$store.dispatch('questions/store', forms.form._id)
+        console.log(questions)
+
         
         this.$router.push(`/questions/${forms.form._id}`)
       } catch (error) {
