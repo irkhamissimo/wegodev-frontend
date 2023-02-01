@@ -25,7 +25,6 @@ export default {
             Authorization: `Bearer ${this.$store.state.auth.accessToken}`
           }
         })
-        console.log((response))
 
       } catch (error) {
         console.error(error)
