@@ -25,7 +25,7 @@ export default {
           {
             type: 'error',
             show: true,
-            message: 'SERVER_ERROR'
+            message: error.response.data.message
           }
         )
 

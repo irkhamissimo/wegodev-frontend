@@ -38,6 +38,8 @@ export default function ({ $axios, redirect, store }) {
         ] = `Bearer ${store.state.auth.accessToken}`;
 
         return $axios(originalRequest);
+      } else {
+        return Promise.reject(error)
       }
     } catch (err) {
       if (error.message === 'LOGOUT') return redirect('/logout');
