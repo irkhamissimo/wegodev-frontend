@@ -28,3 +28,23 @@
   </div>
 
 </template>
+
+<script>
+
+export default ({
+  async asyncData({ params, redirect }) {
+    try {
+      if (!params.id) throw { message: 'FORM_ID_EMPTY' }
+
+      return { formId: params.id }
+    } catch (error) {
+      redirect('/404')
+      return false;
+    }
+  },
+  mounted() {
+    console.log(this.formId)
+  }
+})
+
+</script>
