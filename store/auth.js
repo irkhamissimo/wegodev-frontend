@@ -23,18 +23,16 @@ export const mutations = {
     state.refreshToken = refreshToken;
   },
   logout(state) {
-    state.fullname = null,
-    state.accessToken = null,
-    state.refreshToken = null;
-  }
+    (state.fullname = null),
+      (state.accessToken = null),
+      (state.refreshToken = null);
+  },
 };
 
 export const actions = {
   async login({ commit }, payload) {
-    const response = await this.$axios.$post(
-      'http://localhost:5000/login',
-      payload
-    );
+    const response = await this.$axios.$post('/login', payload);
+
     if (!response) return false;
 
     commit('setAccessToken', response.accessToken);
