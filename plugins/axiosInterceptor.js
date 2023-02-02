@@ -10,6 +10,13 @@ export default function ({ $axios, redirect, store }) {
   $axios.onResponseError(async (error) => {
     try {
       if (
+        error.response.message === 'REFRESH_TOKEN_EXPIRED' ||
+        error.response.message === 'INVALID_REFRESH_TOKEN'
+      ) {
+        throw new Error('LOGOUT');
+      }
+
+      if (
         error.response.status === 401 &&
         error.response.message === 'ACCESS_TOKEN_EXPIRED'
       ) {
@@ -18,6 +25,7 @@ export default function ({ $axios, redirect, store }) {
         const response = await $axios.$post('/refresh-token', {
           refreshToken: refreshToken,
         });
+        if (!response) throw new Error('LOGOUT');
 
         // menyimpan token baru ke store/auth
         store.commit('auth/setAccessToken', response.accessToken);
@@ -32,7 +40,7 @@ export default function ({ $axios, redirect, store }) {
         return $axios(originalRequest);
       }
     } catch (err) {
-      return redirect('/logout');
+      if (error.message === 'LOGOUT') return redirect('/logout');
     }
   });
 }
