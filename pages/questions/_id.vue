@@ -42,8 +42,18 @@ export default ({
       return false;
     }
   },
+  methods: {
+    async fetch() {
+      try {
+        const response = await this.$store.dispatch('forms/show', this.formId)
+     
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
   mounted() {
-    console.log(this.formId)
+    this.fetch();
   }
 })
 
