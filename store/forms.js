@@ -1,17 +1,17 @@
 export const state = () => ({
   id: null,
   title: null,
-  desscription: null,
+  description: null,
   public: null,
 });
 
 export const getters = {};
 export const mutations = {
-  setForm(state, form) {
-    state.id = form.id ? form.id : null;
-    state.title = form.title ? form.title : null;
-    state.description = form.description ? form.description : null;
-    state.public = form.public ? form.public : null;
+  setForm(state, response) {
+    state.id = response.form._id ? response.form._id : null;
+    state.title = response.form.title ? response.form.title : null;
+    state.description = response.form.description ? response.form.description : null;
+    state.public = response.form.public ? response.form.public : null;
   },
 };
 
@@ -20,14 +20,14 @@ export const actions = {
     const response = await this.$axios.$post('/forms');
 
     if (!response) return false;
-    commit('setForm', response);
+    
     return response;
   },
   async show({ commit }, id) {
     const response = await this.$axios.$get(`/forms/${id}`);
 
     if (!response) return false;
-
+    commit('setForm', response);
     return response;
   },
 };
